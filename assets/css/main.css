@@ -2108,6 +2108,11 @@
 		margin: 0 0 2em 0;
 		padding-left: 1em;
 	}
+	
+	ul#menu li {
+    display:inline;
+    font-size: 1.1em;
+  }
 
 		ul li {
 			padding-left: 0.5em;
@@ -2923,7 +2928,7 @@
 			ul.icons li .icon {
 				font-size: 1.25em;
 			}
-
+			
 		/* Header */
 
 			#header {
