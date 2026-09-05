@@ -1,0 +1,68 @@
+# Publications, newest year first. "A. Vaishnav" is emphasised automatically
+# by the template, so write author lists plainly here.
+# `note` renders as a small badge (e.g. an award).
+
+- year: 2020
+  items:
+    - authors: "A. Vaishnav, et al."
+      title: "FOS: A Modular FPGA Operating System for Dynamic Workloads"
+      venue: "ACM TRETS"
+      url: "https://www.researchgate.net/publication/338883477_FOS_A_Modular_FPGA_Operating_System_for_Dynamic_Workloads"
+
+- year: 2019
+  items:
+    - authors: "K. Manev*, A. Vaishnav*, D. Koch"
+      title: "Unexpected Diversity: Quantitative Memory Analysis for Zynq UltraScale+ Systems"
+      venue: "FPT, Tianjin"
+      url: "https://www.researchgate.net/publication/336714879_Unexpected_Diversity_Quantitative_Memory_Analysis_for_Zynq_UltraScale_Systems"
+    - authors: "A. Vaishnav, et al."
+      title: "Heterogeneous Resource-Elastic Scheduling for CPU+FPGA Architectures"
+      venue: "10th HEART, Nagasaki"
+      url: "https://www.researchgate.net/publication/332911741_Heterogeneous_Resource-Elastic_Scheduling_for_CPUFPGA_Architectures"
+    - authors: "A. Vaishnav, et al."
+      title: "The FOS (FPGA Operating System) Demo"
+      venue: "29th FPL, Barcelona"
+      url: "https://www.research.manchester.ac.uk/portal/en/publications/the-fos-fpga-operating-system-demo(bb41a0b4-d3b5-4dad-831f-7f938253c864).html"
+    - authors: "K.D. Pham, K. Paraskevas, A. Vaishnav, et al."
+      title: "ZUCL 2.0: Virtualised Memory and Communication for ZYNQ UltraScale+ FPGAs"
+      venue: "6th FSP, Barcelona"
+      url: "https://www.researchgate.net/publication/335883857_ZUCL_20_Virtualised_Memory_and_Communication_for_ZYNQ_UltraScale_FPGAs"
+    - authors: "K. Manev, A. Vaishnav, et al."
+      title: "Scalable Filtering Modules for Database Acceleration on FPGAs"
+      venue: "10th HEART, Nagasaki"
+      url: "https://dl.acm.org/citation.cfm?id=3337810"
+    - authors: "A. Vaishnav, et al."
+      title: "Heterogeneous Resource-Elastic Management for FPGAs: Concepts, Theory and Implementation"
+      venue: "Preprint"
+      url: "https://doi.org/10.13140/RG.2.2.15161.93280"
+
+- year: 2018
+  items:
+    - authors: "A. Vaishnav, et al."
+      title: "Live Migration for OpenCL FPGA Accelerators"
+      venue: "FPT, Naha"
+      note: "Best paper nominee"
+      url: "https://www.researchgate.net/publication/327688890_Live_Migration_for_OpenCL_FPGA_Accelerators"
+    - authors: "A. Vaishnav, et al."
+      title: "Resource Elastic Virtualization for FPGAs using OpenCL"
+      venue: "28th FPL, Dublin"
+      url: "https://www.researchgate.net/publication/327368953_Resource_Elastic_Virtualization_for_FPGAs_using_OpenCL"
+    - authors: "A. Vaishnav, et al."
+      title: "A Survey on FPGA Virtualization"
+      venue: "28th FPL, Dublin"
+      url: "https://www.researchgate.net/publication/327368955_A_Survey_on_FPGA_Virtualization"
+    - authors: "K.D. Pham, A. Vaishnav, et al."
+      title: "ZUCL: A ZYNQ UltraScale+ Framework for OpenCL HLS Applications"
+      venue: "5th FSP"
+      url: "https://www.researchgate.net/publication/327368678_ZUCL_A_ZYNQ_UltraScale_Framework_for_OpenCL_HLS_Applications"
+    - authors: "K.D. Pham, E. Horta, D. Koch, A. Vaishnav, T. Kuhn"
+      title: "IPRDF: An Isolated Partial Reconfiguration Design Flow for Xilinx FPGAs"
+      venue: "12th MCSoC"
+      url: "https://www.researchgate.net/publication/327700897_IPRDF_An_Isolated_Partial_Reconfiguration_Design_Flow_for_Xilinx_FPGAs"
+
+- year: 2017
+  items:
+    - authors: "A. Vaishnav, et al."
+      title: "A Security Library for FPGA Interlays"
+      venue: "27th FPL, Ghent"
+      url: "https://ieeexplore.ieee.org/document/8056817/"

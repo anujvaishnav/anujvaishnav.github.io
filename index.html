@@ -1,773 +1,142 @@
- <!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Anuj Vaishnav</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+---
+layout: default
+title: Anuj Vaishnav
+description: >-
+  Anuj Vaishnav — computer engineer and researcher. Team Lead at Bloomberg
+  building distributed systems for fixed income trading. Previously FPGA
+  virtualisation and a PhD at the University of Manchester.
+---
 
-		<link rel="stylesheet" href="assets/css/reset.css"> <!-- CSS reset -->
-		<link rel="stylesheet" href="assets/css/style.css"> <!-- Resource style -->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="assets/js/modernizr.js"></script> <!-- Modernizr -->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<header class="hero">
+	<div class="hero-top">
+		<img class="av" src="{{ '/images/anuj.png' | relative_url }}" width="200" height="200" alt="Anuj Vaishnav">
+		<div>
+			<h1>Anuj Vaishnav, PhD</h1>
+			<p class="role">Team Lead at <strong>Bloomberg</strong> &middot; Electronic Trading</p>
+		</div>
+	</div>
 
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-89FFWR4PCS"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		
-		  gtag('config', 'G-89FFWR4PCS');
-		</script>
-    
-	</head>
-	<body id="top">
+	<p class="bio">I build and optimise computer systems. Today that means high-performance
+	distributed systems for fixed income trading. Before that, latency engineering at AMD,
+	a startup, and a PhD at the University of Manchester on resource management and FPGA
+	virtualisation, where I designed <a href="https://github.com/khoapham/fos">FOS</a>, an
+	operating system for FPGAs (<a href="https://www.youtube.com/watch?v=WciuDXEIsr8">watch
+	the demo</a>).</p>
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="#" class="image avatar"><img src="images/avatar_4.png" alt="" /></a>
-					<h1><strong>Anuj Vaishnav, Ph.D</strong> <br />
-					<h1>Computer Engineer | Researcher</h1><!-- <br>(President's Doctoral Scholar)</h1> -->
-				</div>
-			</header>
+	<p class="bio">Across FPGAs, RTL, compilers, networking and distributed systems I keep
+	meeting the same problem: the hard part is not solving the bottleneck, it is finding
+	which one matters. Lately I have been writing about whether AI agents can learn to do
+	the same.</p>
 
-		<!-- Main -->
-			<div id="main">
+	<div class="pills">
+		<a class="pill primary" href="mailto:dranujvaishnav@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5z"/></svg>Get in touch</a>
+		<a class="pill" href="https://github.com/anujvaishnav"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 00-3.16 19.5c.5.08.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.9.83.1-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.57.69.48A10 10 0 0012 2z"/></svg>GitHub</a>
+		<a class="pill" href="https://scholar.google.co.uk/citations?user=GIMybIcAAAAJ"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3L1 9l11 6 9-4.9V17h2V9zM4 13.4V17c0 2.2 3.6 4 8 4s8-1.8 8-4v-3.6l-8 4.4z"/></svg>Scholar</a>
+		<a class="pill" href="https://www.linkedin.com/in/anujvaishnav/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.5 8.65 21 11 21 14.1V21h-4v-6.2c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V21H9z"/></svg>LinkedIn</a>
+	</div>
+</header>
 
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-						<h1>About me</h1>
-						</header>
-						
-						  <p>
-						  Typically, you will find me curious about everything related to computers, from microservices and 
-						  operating system to CPUs and hardware accelerators. Building and optimizing systems to achieve maximum 
-						  efficiency is what drives me, and collaborating with others to achieve business impact is what makes my 
-						  work fulfilling.
-						  </p>
+<section id="writing" class="section">
+	<h2 class="sh">Writing <a class="more" href="{{ '/blog/' | relative_url }}">All posts &rarr;</a></h2>
+	{%- if site.posts.size > 0 %}
+	{%- for post in site.posts limit: 2 %}
+	<a class="post-card" href="{{ post.url | relative_url }}">
+		<div class="meta">
+			<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+			{%- assign words = post.content | strip_html | number_of_words %} &middot; {{ words | divided_by: 220 | plus: 1 }} min read
+		</div>
+		<h3>{{ post.title }}</h3>
+		<p>{{ post.description | default: post.subtitle | default: post.excerpt | strip_html | strip_newlines | truncate: 240 }}</p>
+		<span class="go">Read the essay &rarr;</span>
+	</a>
+	{%- endfor %}
+	{%- else %}
+	<p class="ct">Nothing published yet &mdash; <a href="{{ '/blog/' | relative_url }}">check back soon</a>.</p>
+	{%- endif %}
+</section>
 
-              <p>
-              In my current role at Bloomberg in the Electronic Trading team, I build high-performance microservices for 
-              distributed systems with a focus on performance and scalability. I love leveraging the latest technologies
-              and techniques to create efficient solutions that meet the unique needs of the finance industry.
-              </p>
-              <p>
-              In the past, I did my PhD at the University of Manchester on <a href="https://www.researchgate.net/publication/338883477_FOS_A_Modular_FPGA_Operating_System_for_Dynamic_Workloads">
-						  dynamic resource management for FPGAs in cloud/edge environments</a>. Along the way also worked on how 
-						  to build and compile modular FPGA systems just like we build and compile software applications. This 
-						  resulted in <a href="https://www.youtube.com/watch?v=WciuDXEIsr8"> FPGA Operating System (FOS)</a>. 
-              </p>
-              <p>
-              I am always eager to learn and explore new horizons in computer engineering. Feel free to explore my 
-              experience, skills, and interests on my website and connect with me to discuss how I can help you achieve
-              your goals. Thank you for visiting!
-              </p>						
-						  <p>             
-            <p>  
-              <ul id="menu">
-                <li><a href="#Timeline">My Journey</a></li>
-                <li><a href="#Publications">Publications</a></li>
-                <li><a href="CV_Anuj_Vaishnav.pdf">Curriculum Vitae</a></li>
-                <li><a href="#Talks">Talks</a></li>
-                <!--li><a href="#other_roles">Other Roles</a></li>-->
-                <li><a href="#contact">Get In Touch</a></li>
-              </ul>
-						</p>
-						<h5>Words I like to live by: </h5>
-						<blockquote>People of accomplishment rarely sat back and let things happen to them. 
-						They went out and happened to things. - Leonardo da Vinci </blockquote>
-
-				<section id="Timeline">
-					<h1>My Journey</h1>
-					<section id="cd-timeline" class="cd-container">
-					
-					  <div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>Bloomberg - Senior Software Engineer</h2>
-								<p>Building distributed systems for Fixed Income Trading.</p>
-								<span class="cd-date">Feb 2023 - Present</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-					
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>AMD - Senior Product Applications Engineer</h2>
-								<p>Worked on optimizing latency from NIC wire to application and customer issues</p>
-								<span class="cd-date">Aug 2021 - Feb 2023</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-						
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>Cohst.Me - Co-Founder</h2>
-								<p>Worked on SaaS platform for Infulencer Marketing and Monetisation for Video Services</p>
-								<span class="cd-date">May 2020 - July 2021</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-						
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>PhD in Computer Science</h2>
-								<p>At The University of Manchester, on Resource Management & FPGA Virtualisation
-								as a President's Doctoral Scholar.
-								<a href="https://dx.doi.org/10.13140/RG.2.2.36005.93929"> Read my PhD thesis</a>.</p>
-								<span class="cd-date">Sep 2017 - Aug 2020</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-						
-						
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>Multi-tenant FPGA Platform Designer</h2>
-								<p>Designed The FOS (FPGA Operating System) and presented the demo live at FPL 2019.
-								Find it online on 
-								<a href="https://github.com/khoapham/fos">GitHub</a>.
-								</p>
-								<span class="cd-date">Jun 2019 - Sep 2019</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-						
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>HTV - Consulting Embedded Platform Engineer</h2>
-								<p>Developed an embedded platform with remote-access for cryptography acceleration on FPGAs.</p>
-								<span class="cd-date">Sept 2018 - Nov 2018</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-						
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>BEng (Hons) Computer Systems Engineering</h2>
-								<p>At Univesity of Manchester with specialisation in 
-								Computer Architecture and System on Chip. 
-								<a href="http://studentnet.cs.manchester.ac.uk/resources/library/3rd-year-projects/2017/anuj.vaishnav.pdf"> 
-								Read my final year thesis</a>.</p>
-								<!-- <a href="#0" class="cd-read-more">Read more</a> -->
-								<span class="cd-date">Sept 2014 - July 2017</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-						
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>ARM - Hardware Intern - Design  and Verification</h2>
-								<p>Part of Verification IP team working on 
-								<a href="https://www.arm.com/products/system-ip/amba-specifications">
-								AMBA protocols (CHI, ACE, AXI) </a> and its future variants.</p>
-								<!-- <a href="#0" class="cd-read-more">Read more</a> -->
-								<span class="cd-date">July 2016 - Sept 2016</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-location">
-								<img src="images/cd-icon-location.svg" alt="Location">
-							</div> <!-- cd-timeline-img -->
-
-							<div class="cd-timeline-content">
-								<h2>Summer Research Assistant</h2>
-								<p>Worked on Transport triggered and Dataflow Computer
-								Architecture under 
-								<a href="https://personalpages.manchester.ac.uk/staff/javier.navaridas/">
-								Dr. Javier Navaridas</a>.</p>
-								<!-- <a href="#0" class="cd-read-more">Read more</a> -->
-								<span class="cd-date">July 2015 - Aug 2015</span>
-							</div> <!-- cd-timeline-content -->
-						</div> <!-- cd-timeline-block -->
-				</section>
-			
-			          </section>
-        <section id="recent_work">
-						<h1>Past Work</h1>
-						
-						<div class="row">
-							<article class="6u 12u$(small) work-item">
-								<a href="https://github.com/khoapham/fos" class="image fit thumb"><img src="images/fos_usage_mode_blue.svg" alt="" /></a>
-								<h3>The FOS (FPGA Operating System)</h3>
-								<p>With FOS you can use the FPGA in traditional as well as multi-tenancy mode. It is built on top of modular FPGA development Flow and resource elastic scheduler for highest flexibility and performance.</p>
-							</article>
-							<article class="6u$ 12u$(small) work-item">
-								<a href="https://github.com/khoapham/fos" class="image fit thumb"><img src="images/Modular_FPGA_Development_blue.svg" alt="" /></a>
-								<h3>Module FPGA Development Flow</h3>
-								<p>Build FPGA systems that allow each system component to be swappable and agnostic to the heterogeneity of EDA tool versions, hardware and software layers.</p>
-							</article>
-							<article class="6u 12u$(small) work-item">
-								<a href="https://www.researchgate.net/publication/335577371_Heterogeneous_Resource-Elastic_Management_for_FPGAs_Concepts_Theory_and_Implementation" class="image fit thumb"><img src="images/hetero_resource_elastic.svg" alt="" /></a>
-								<h3>Heterogeneous Resource Elasticity</h3>
-								<p>Dynamically change the resource allocation for both FPGA and CPU transparently from the user. Including the number of compute units, workload partitioning, accelerator selection and device type selection.</p>
-							</article>
-							<article class="6u$ 12u$(small) work-item">
-								<a href="https://www.researchgate.net/publication/327688890_Live_Migration_for_OpenCL_FPGA_Accelerators" class="image fit thumb"><img src="images/migration_v2.svg" alt="" /></a>
-								<h3>Live migration for FPGA Accelerators</h3>
-								<p>Transparently move an OpenCL accelerator from one FPGA to another with lower overhead.</p>
-							</article>
-						</div>
-					</section>
-					
-			
-				</section>
-				<!-- Two -->
-					<section id="Publications">
-						
-						<h1> Publications </h1>
-<h4>Find the complete list on <a href="https://scholar.google.co.uk/citations?user=GIMybIcAAAAJ">Google Scholar</a>.</h4>
-
-						<ul class="alt">
-						<h4>2020:</h4>
-						<ul>
-						<li><u><i>A. Vaishnav</i></u>, et al., "<i>FOS: A Modular FPGA Operating System for Dynamic Workloads</i>", ACM Transactions on Reconfigurable Technology and Systems (TRETS) 2020. <a href="https://www.researchgate.net/publication/338883477_FOS_A_Modular_FPGA_Operating_System_for_Dynamic_Workloads">Read Online</a> </li>
-						</ul>
-						
-						<h4>2019:</h4>
-						<ul>
-						<li>[Preprint] <u><i>A. Vaishnav</i></u>, et al., "<i>Heterogeneous Resource-Elastic Management for FPGAs: Concepts, Theory and Implementation</i>", 2019. <a href="https://doi.org/10.13140/RG.2.2.15161.93280">Read Online</a> </li>
-						
-						<li>K. Manev*, <u><i>A. Vaishnav</i></u>*, and D. Koch, "<i>Unexpected Diversity: Quantitative Memory Analysis for Zynq UltraScale+ Systems</i>", 
-						FPT, Tianjin, 2019. (*Co-first authors) <a href="https://www.researchgate.net/publication/336714879_Unexpected_Diversity_Quantitative_Memory_Analysis_for_Zynq_UltraScale_Systems"> Read Online</a> </li>
-							
-						<li><u><i>A. Vaishnav</i></u>, et al., "<i>The FOS (FPGA Operating System) Demo</i>", 
-						29th FPL, Barcelona, 2019. <a href="https://www.research.manchester.ac.uk/portal/en/publications/the-fos-fpga-operating-system-demo(bb41a0b4-d3b5-4dad-831f-7f938253c864).html">Read Online</a> </li>
-						
-						<li>K.D. Pham, K. Paraskevas, <u><i>A. Vaishnav</i></u>, et al., "<i>ZUCL 2.0 Virtualised Memory and Communication for ZYNQ UltraScale+ FPGAs</i>", 
-						6th FSP, Barcelona, 2019. <a href="https://www.researchgate.net/publication/335883857_ZUCL_20_Virtualised_Memory_and_Communication_for_ZYNQ_UltraScale_FPGAs">Read Online</a> </li>
-						
-						<li><u><i>A. Vaishnav</i></u>, et al., "<i>Heterogeneous Resource-Elastic Scheduling for CPU+FPGA Architectures</i>", 
-						10th HEART, Nagasaki, 2019. <a href="https://www.researchgate.net/publication/332911741_Heterogeneous_Resource-Elastic_Scheduling_for_CPUFPGA_Architectures">Read Online</a> </li>
-						
-						<li>K. Manev, <u><i>A. Vaishnav</i></u>, et al., "<i>Scalable Filtering Modules for Database Acceleration on FPGAs</i>", 
-						10th HEART, Nagasaki, 2019. <a href="https://dl.acm.org/citation.cfm?id=3337810">Read Online</a></li>
-						</ul>
-						
-						<h4>2018:</h4>
-						<ul>
-						<li><u><i>A. Vaishnav</i></u>, et al., "<i>Live Migration for OpenCL FPGA Accelerators</i>", 
-						FPT, Naha, 2018. <font color="red">(Best Paper Nominee)</font> <a href="https://www.researchgate.net/publication/327688890_Live_Migration_for_OpenCL_FPGA_Accelerators">Read Online</a></li>
-						
-						<li><u><i>A. Vaishnav</i></u>, et al., "<i>Resource Elastic Virtualization for FPGAs using OpenCL</i>", 
-						28th FPL, Dublin, 2018. <a href="https://www.researchgate.net/publication/327368953_Resource_Elastic_Virtualization_for_FPGAs_using_OpenCL">Read Online</a></li>
-						
-						<li><u><i>A. Vaishnav</i></u>, et al., "<i>A Survey on FPGA Virtualization</i>", 
-						28th FPL, Dublin, 2018. <a href="https://www.researchgate.net/publication/327368955_A_Survey_on_FPGA_Virtualization">Read Online</a></li>	
-						
-						<li>K.D. Pham, <u><i>A. Vaishnav</i></u>, et al., "<i>ZUCL: A ZYNQ UltraScale+ Framework for OpenCL HLS Applications</i>", 
-						5th FSP, 2018. <a href="https://www.researchgate.net/publication/327368678_ZUCL_A_ZYNQ_UltraScale_Framework_for_OpenCL_HLS_Applications">Read Online</a></li>
-						
-						<li>K.D. Pham, E. Horta, D. Koch, <u><i>A. Vaishnav</i></u>, T. Kuhn, "<i>IPRDF: An Isolated Partial Reconfiguration Design Flow for Xilinx FPGAs</i>", 
-						12th MCSoC, 2018. <a href="https://www.researchgate.net/publication/327700897_IPRDF_An_Isolated_Partial_Reconfiguration_Design_Flow_for_Xilinx_FPGAs">Read Online</a></li>
-            </ul>
-            
-            <h4>2017:</h4>
-            <ul> 
-						<li><u><i>A. Vaishnav</i></u>, et al., "<i>A Security Library for FPGA Interlays</i>", 
-						27th FPL, Ghent, 2017. <a href="https://ieeexplore.ieee.org/document/8056817/">Read Online</a></li>
-						</ul>
-						
-						</ul>
-						
-					</section>
-					
-					 <section id="Talks">
-				  <h1>Talks</h1>
-				  <ul>
-				    <li><a href="https://www.researchgate.net/publication/335827218_ZUCL_20_Virtualised_Memory_and_Communication_for_ZYNQ_UltraScale_FPGAs">ZUCL 2.0: Virtualised Memory and Communication for ZYNQ UltraScale+ FPGAs</a></li>
-				    <li><a href="https://www.researchgate.net/publication/333682653_Heterogeneous_Resource-elastic_Scheduling_for_CPUFPGA_Architecture">Heterogeneous Resource-elastic Scheduling for CPU+FPGA Architecture</a></li>
-				    <li><a href="https://www.researchgate.net/publication/337592198_Live_Migration_for_OpenCL_FPGA_Accelerators">Live Migration for OpenCL FPGA Accelerators</a></li>
-				    <li><a href="https://www.researchgate.net/publication/327499246_Resource_Elastic_Virtualization_for_FPGAs_using_OpenCL">Resource Elastic Virtualization for FPGAs using OpenCL</a></li>
-				    <li><a href="https://www.researchgate.net/publication/337592241_A_Survey_on_FPGA_Virtualization">A Survey on FPGA Virtualization</a></li>
-				  </ul>
-				</section>
-					
-					
- 					<section id="Awards">	
-						<h1>Honours and Awards</h1>
-						<ul class="alt">
-						
-						  <li><header><h4>Runner Up for the Carole Goble Medal for Outstanding 
-						  Doctoral Paper in Computer Science</h4>
-							<p>April 2019 | University of Manchester</p></header>
-							Given to the second-place winner of best research paper of the year across
-							the school, based on the external reviews, venue and acceptance rate.
-							For "Live Migration for OpenCL FPGA Accelerators".
-							</li>
-						  
-							<li><header><h4>President’s Doctoral Scholar</h4>
-							<p>Sept 2017 | University of Manchester</p></header>
-							Given to top 3% of research students who demonstrate academic excellence 
-              and leadership potential, university-wide.
-							</li>
-							<li><header><h4>Edwards prize</h4>
-							 <p>July 2017 | University of Manchester</p></header>
-							This prize is awarded to the student who has, in the opinion of the 
-							Examiners, performed with distinction throughout their degree programme 
-							in examinations, laboratories and projects relating to Computer 
-							Engineering.
-							</li>
-							<li><header><h4>IBM Team Challenge Award for Manchester University</h4>
-							 <p>July 2016 | IBM</p></header>
-							For the sterling performance of the team throughout the year in all 
-							coursework and challenges of Software Engineering.
-							</li>
-							<li><header><h4>The Kate Kneebone Acorn Bursary</h4>
-							 <p>Jan 2016 | University of Manchester</p></header>
-							Awarded on the grounds of academic merit to a student who has shown 
-							commitment, determination, enthusiasm, personal application and 
-							promise.
-							</li>
-							<li><header><h4>Golden Anniversary Prize</h4>
-							 <p>Aug 2015 | University of Manchester</p></header>
-							For Excellence in first year studies in academic year 2014-15. 
-							Given to top 5 students of the year.
-							</li>
-						</ul>
-					
-					</section>
-
-       
-				<!-- Three -->
-          <!--<section id="other_roles">
-						<h1> Other roles </h1>
-						<ul>
-						<li>Currently, I am also a teaching assistant and provide support for labs, marking and teaching (in labs).
-						<ul>
-							<li><a href="http://studentnet.cs.manchester.ac.uk/syllabus/?code=COMP12111">COMP12111</a>: 
-								Fundamentals of Computer Engineering (> 180 UG students)</li>
-							<li><a href="http://studentnet.cs.manchester.ac.uk/syllabus/?code=COMP22111">COMP22111</a>: 
-								Processor Microarchitecture (> 50 UG students)</li>
-							<li><a href="http://studentnet.cs.manchester.ac.uk/syllabus/?code=COMP33711">COMP33711</a>: 
-								Agile software Engineering (> 70 UG students)</li>
-						  <li><a href="http://studentnet.cs.manchester.ac.uk/syllabus/?code=COMP32211">COMP32211</a>: 
-								Implementing System-on-Chip Designs (> 20 UG students)</li>
-              <li><a href="http://studentnet.cs.manchester.ac.uk/syllabus/?code=COMP22712">COMP22712</a>: 
-								Microcontrollers (> 70 UG students)</li>
-						</ul></li>
-						
-						<li>Member of Organising Committee for <a href="http://www.psrs.manchester.ac.uk/">Postgraduate Summer Research Showcase 2018.</a> <br />In 2017 we had just over 160 posters on display from across the three faculties, a research image gallery, research films and 12 interactive posters on show. </li>
-						</ul>
-					</section>
--->
-					<section id="My Interests">
-						<h1> Other Interests</h1>
-						<ul>
-						<li>Cycling</li>
-						<li>Long walks</li>
-						<li>Playing chess and Age of Empires 2</li>
-						<li>Binge watching series and movies</li>
-						<li>Nature and Still life Photography using phone camera
-						(Catch me on <a href="https://www.instagram.com/anujvaishnav/">Instagram</a> for latest updates)</li>
-						</ul>
-					</section>
-					
-					<section id="contact">
-						<h1>Get In Touch</h1>
-						 <!--<div class="row">
-							<div class="4u$ 12u$(small)">-->
-								<ul class="labeled-icons">	
-									<li>
-										<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
-										<a href="mailto:dranujvaishnav@gmail.com">Email me on dranujvaishnav@gmail.com</a>
-									</li>
-									<li>
-										<h3 class="icon fa-linkedin"><span class="label">Research Gate</span></h3>
-										<a href="https://www.linkedin.com/in/anujvaishnav/">Send a message on LinkedIn</a>
-									</li>
-									<li>
-										<h3 class="icon fa-home"><span class="label">Research Gate</span></h3>
-										<a href="https://www.researchgate.net/profile/Anuj_Vaishnav">Reach out on Research Gate </a>
-									</li>
-									<li>
-									  <h3 class="icon fa-arrow-up"></h3>
-									  <a href="#main">Go back up!</a>
-									</li>
-								</ul>
-							<!--</div>
-						</div>	-->
-					</section>
-				<!-- Four -->
-				
-					<!-- <section id="four">
-						<h2>Elements</h2>
-
-						<section>
-							<h4>Text</h4>
-							<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-							This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-							This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-							<hr />
-							<header>
-								<h4>Heading with a Subtitle</h4>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<header>
-								<h5>Heading with a Subtitle</h5>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<hr />
-							<h2>Heading Level 2</h2>
-							<h3>Heading Level 3</h3>
-							<h4>Heading Level 4</h4>
-							<h5>Heading Level 5</h5>
-							<h6>Heading Level 6</h6>
-							<hr />
-							<h5>Blockquote</h5>
-							<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-							<h5>Preformatted</h5>
-							<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-						</section> -->
-
-						 <!--<section>
-							<h4>Lists</h4>
-							<div class="row">
-								<div class="6u 12u$(xsmall)">
-									<h5>Unordered</h5>
-									<ul>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-									<h5>Alternate</h5>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-								</div>
-								<div class="6u$ 12u$(xsmall)">
-									<h5>Ordered</h5>
-									<ol>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ol>
-									<h5>Icons</h5>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-										<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-										<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
-									</ul>
-								</div>
-							</div>
-							 <h5>Actions</h5>
-							<ul class="actions">
-								<li><a href="#" class="button special">Default</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions small">
-								<li><a href="#" class="button special small">Small</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<div class="row">
-								<div class="6u 12u$(small)">
-									<ul class="actions vertical">
-										<li><a href="#" class="button special">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</div>
-								<div class="6u$ 12u$(small)">
-									<ul class="actions vertical small">
-										<li><a href="#" class="button special small">Small</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-								</div>
-								<div class="6u 12u$(small)">
-									<ul class="actions vertical">
-										<li><a href="#" class="button special fit">Default</a></li>
-										<li><a href="#" class="button fit">Default</a></li>
-									</ul>
-								</div>
-								<div class="6u$ 12u$(small)">
-									<ul class="actions vertical small">
-										<li><a href="#" class="button special small fit">Small</a></li>
-										<li><a href="#" class="button small fit">Small</a></li>
-									</ul>
-								</div>
-							</div>
-						</section> -->
-
-						<!-- <section>
-							<h4>Table</h4>
-							<h5>Default</h5>
-							<div class="table-wrapper">
-								<table>
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-
-							<h5>Alternate</h5>
-							<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-						</section>
-
-						<section>
-							<h4>Buttons</h4>
-							<ul class="actions">
-								<li><a href="#" class="button special">Special</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button big">Big</a></li>
-								<li><a href="#" class="button">Default</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<ul class="actions fit">
-								<li><a href="#" class="button special fit">Fit</a></li>
-								<li><a href="#" class="button fit">Fit</a></li>
-							</ul>
-							<ul class="actions fit small">
-								<li><a href="#" class="button special fit small">Fit + Small</a></li>
-								<li><a href="#" class="button fit small">Fit + Small</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button special icon fa-download">Icon</a></li>
-								<li><a href="#" class="button icon fa-download">Icon</a></li>
-							</ul>
-							<ul class="actions">
-								<li><span class="button special disabled">Special</span></li>
-								<li><span class="button disabled">Default</span></li>
-							</ul>
-						</section>
-
-						<section>
-							<h4>Form</h4>
-							<form method="post" action="#">
-								<div class="row uniform 50%">
-									<div class="6u 12u$(xsmall)">
-										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-									</div>
-									<div class="6u$ 12u$(xsmall)">
-										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-									</div>
-									<div class="12u$">
-										<div class="select-wrapper">
-											<select name="demo-category" id="demo-category">
-												<option value="">- Category -</option>
-												<option value="1">Manufacturing</option>
-												<option value="1">Shipping</option>
-												<option value="1">Administration</option>
-												<option value="1">Human Resources</option>
-											</select>
-										</div>
-									</div>
-									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-										<label for="demo-priority-low">Low Priority</label>
-									</div>
-									<div class="4u 12u$(small)">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Normal Priority</label>
-									</div>
-									<div class="4u$ 12u(small)">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">High Priority</label>
-									</div>
-									<div class="6u 12u$(small)">
-										<input type="checkbox" id="demo-copy" name="demo-copy">
-										<label for="demo-copy">Email me a copy of this message</label>
-									</div>
-									<div class="6u$ 12u$(small)">
-										<input type="checkbox" id="demo-human" name="demo-human" checked>
-										<label for="demo-human">I am a human and not a robot</label>
-									</div>
-									<div class="12u$">
-										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-									</div>
-									<div class="12u$">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="special" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</section>
-
-						<section>
-							<h4>Image</h4>
-							<h5>Fit</h5>
-							<div class="box alt">
-								<div class="row 50% uniform">
-									<div class="12u$"><span class="image fit"><img src="images/fulls/05.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="4u$"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/04.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/05.jpg" alt="" /></span></div>
-									<div class="4u$"><span class="image fit"><img src="images/thumbs/06.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="4u"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="4u$"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-								</div>
-							</div>
-							<h5>Left &amp; Right</h5>
-							<p><span class="image left"><img src="images/.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-							<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						</section>
-
-					</section>  -->
-					
-				
-
+<section id="work" class="section">
+	<h2 class="sh">Selected work</h2>
+	<div class="work">
+		{%- for p in site.data.projects %}
+		<a href="{{ p.url }}">
+			<img src="{{ p.image | relative_url }}" width="48" height="48" alt="" loading="lazy">
+			<div>
+				<h3>{{ p.title }}</h3>
+				<p>{{ p.blurb }}</p>
 			</div>
+		</a>
+		{%- endfor %}
+	</div>
+</section>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/anujvaishnav/" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://github.com/anujvaishnav" class="icon fa-github"><span class="label">Github</span></a></li>					
-						<li><a href="https://www.instagram.com/anujvaishnav/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>	
-						<li><a href="mailto:dranujvaishnav@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Anuj Vaishnav</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+<section id="experience" class="section">
+	<h2 class="sh">Experience</h2>
+	<ul class="xp">
+		{%- for job in site.data.experience %}
+		<li>
+			<span class="when">{{ job.when }}</span>
+			<div>
+				<h3>{{ job.role }}{% if job.org %} <span class="org">&middot; {{ job.org }}</span>{% endif %}</h3>
+				<p>{{ job.detail }}</p>
+			</div>
+		</li>
+		{%- endfor %}
+	</ul>
+</section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+<section id="papers" class="section">
+	<h2 class="sh">Publications <a class="more" href="https://scholar.google.co.uk/citations?user=GIMybIcAAAAJ">Google Scholar &rarr;</a></h2>
+	<div class="pubs">
+		{%- for group in site.data.publications %}
+		<div class="yr">{{ group.year }}</div>
+		<ul>
+			{%- for pub in group.items %}
+			<li>
+				{{ pub.authors | replace: 'A. Vaishnav', '<span class="me">A. Vaishnav</span>' }}.
+				<span class="t">{{ pub.title }}.</span>
+				{{ pub.venue }}.
+				{%- if pub.note %} <span class="badge">{{ pub.note }}</span>{% endif %}
+				<a class="doi" href="{{ pub.url }}">Read</a>
+			</li>
+			{%- endfor %}
+		</ul>
+		{%- endfor %}
+		<p class="pubs-note">* denotes joint first authorship.</p>
+	</div>
+</section>
 
-	</body>
-</html>
+<section id="talks" class="section">
+	<h2 class="sh">Talks</h2>
+	<ul class="plain">
+		{%- for talk in site.data.talks %}
+		<li><a href="{{ talk.url }}">{{ talk.title }}</a></li>
+		{%- endfor %}
+	</ul>
+</section>
+
+<section id="awards" class="section">
+	<h2 class="sh">Honours</h2>
+	<ul class="aw">
+		{%- for award in site.data.awards %}
+		<li>
+			<span class="when">{{ award.when }}</span>
+			<h3>{{ award.title }}</h3>
+			<p>{{ award.detail }}</p>
+		</li>
+		{%- endfor %}
+	</ul>
+</section>
+
+<section id="contact" class="section">
+	<h2 class="sh">Get in touch</h2>
+	<p class="ct">Happy to talk about systems performance, hardware acceleration, or where AI
+	agents are heading. Away from a screen: cycling, long walks, chess, Age of Empires 2, and
+	<a href="https://www.instagram.com/anujvaishnav/">phone-camera photography</a>.</p>
+	<div class="ctlist">
+		<a href="mailto:dranujvaishnav@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5z"/></svg><span>dranujvaishnav@gmail.com</span></a>
+		<a href="https://www.linkedin.com/in/anujvaishnav/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.5 8.65 21 11 21 14.1V21h-4v-6.2c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V21H9z"/></svg><span>LinkedIn</span></a>
+		<a href="https://www.researchgate.net/profile/Anuj_Vaishnav"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-2 5h3.2c1.7 0 2.8 1 2.8 2.5 0 1.2-.7 2-1.7 2.3L16.5 16h-2l-1.9-3.7H11.7V16H10zm1.7 1.4v2.6h1.3c.8 0 1.3-.5 1.3-1.3s-.5-1.3-1.3-1.3z"/></svg><span>ResearchGate</span></a>
+		<a href="https://github.com/anujvaishnav"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 00-3.16 19.5c.5.08.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.9.83.1-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.57.69.48A10 10 0 0012 2z"/></svg><span>GitHub</span></a>
+	</div>
+</section>

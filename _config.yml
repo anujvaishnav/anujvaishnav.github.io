@@ -1,0 +1,65 @@
+# Site settings
+title: Anuj Vaishnav
+tagline: Computer Engineer | Researcher
+description: >-
+  Writing on computer systems, distributed systems, hardware acceleration
+  and AI by Anuj Vaishnav.
+author: Anuj Vaishnav
+url: "https://anujvaishnav.com"
+baseurl: ""
+
+# Social / SEO
+twitter:
+  card: summary
+social:
+  name: Anuj Vaishnav
+  links:
+    - https://www.linkedin.com/in/anujvaishnav/
+    - https://github.com/anujvaishnav
+    - https://scholar.google.co.uk/citations?user=GIMybIcAAAAJ
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+permalink: /blog/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# Build tooling that should not be copied into the published site.
+# Everything else (index.html, assets/, images/, CV, CNAME) is passed
+# through untouched, exactly as it is served today.
+exclude:
+  # README.md MUST stay excluded. GitHub Pages force-loads
+  # jekyll-optional-front-matter + jekyll-default-layout + jekyll-readme-index,
+  # which would otherwise publish it at /README.html with full site chrome
+  # and list it in sitemap.xml. Same applies to any future root-level .md.
+  - README.md
+  # Declaring `exclude` replaces Jekyll's defaults, so restate them.
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - .sass-cache
+  - .jekyll-cache
+  # Superseded by images/anuj.png; kept in git, not published.
+  - images/avatar.jpg
+  - images/avatar_2.jpg
+  - images/avatar_4.jpg
+  - images/avatar_4.png

@@ -1,0 +1,12 @@
+# Talks list.
+
+- title: "ZUCL 2.0: Virtualised Memory and Communication for ZYNQ UltraScale+ FPGAs"
+  url: "https://www.researchgate.net/publication/335827218_ZUCL_20_Virtualised_Memory_and_Communication_for_ZYNQ_UltraScale_FPGAs"
+- title: "Heterogeneous Resource-elastic Scheduling for CPU+FPGA Architecture"
+  url: "https://www.researchgate.net/publication/333682653_Heterogeneous_Resource-elastic_Scheduling_for_CPUFPGA_Architecture"
+- title: "Live Migration for OpenCL FPGA Accelerators"
+  url: "https://www.researchgate.net/publication/337592198_Live_Migration_for_OpenCL_FPGA_Accelerators"
+- title: "Resource Elastic Virtualization for FPGAs using OpenCL"
+  url: "https://www.researchgate.net/publication/327499246_Resource_Elastic_Virtualization_for_FPGAs_using_OpenCL"
+- title: "A Survey on FPGA Virtualization"
+  url: "https://www.researchgate.net/publication/337592241_A_Survey_on_FPGA_Virtualization"

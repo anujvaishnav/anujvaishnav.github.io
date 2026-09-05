@@ -1,0 +1,29 @@
+# Cards in the "Selected work" section.
+
+- title: "FOS — FPGA Operating System"
+  image: "/images/thumbs/fos_usage_mode_blue.png"
+  url: "https://github.com/khoapham/fos"
+  blurb: >-
+    Traditional or multi-tenant FPGA use, on a modular build flow and
+    resource-elastic scheduler. Demoed live at FPL 2019.
+
+- title: "Modular FPGA development flow"
+  image: "/images/thumbs/Modular_FPGA_Development_blue.png"
+  url: "https://github.com/khoapham/fos"
+  blurb: >-
+    Every component swappable and agnostic to EDA tool version, hardware
+    and software layer.
+
+- title: "Heterogeneous resource elasticity"
+  image: "/images/thumbs/hetero_resource_elastic.png"
+  url: "https://www.researchgate.net/publication/335577371_Heterogeneous_Resource-Elastic_Management_for_FPGAs_Concepts_Theory_and_Implementation"
+  blurb: >-
+    Change allocation across FPGA and CPU transparently: compute units,
+    partitioning, accelerator and device selection.
+
+- title: "Live migration for FPGA accelerators"
+  image: "/images/thumbs/migration_v2.png"
+  url: "https://www.researchgate.net/publication/327688890_Live_Migration_for_OpenCL_FPGA_Accelerators"
+  blurb: >-
+    Move an OpenCL accelerator between FPGAs with low overhead.
+    Best paper nominee, FPT 2018.

@@ -1,0 +1,61 @@
+# Roles shown in the Experience section, newest first
+# (the BEng sits last so education closes the list).
+# `detail` may contain inline HTML (links are fine).
+
+- when: "Oct 2025 —"
+  role: "Team Lead"
+  org: "Bloomberg"
+  detail: "Leading the team building distributed systems for fixed income trading blotter."
+
+- when: "Feb 2023 – Oct 2025"
+  role: "Senior Software Engineer"
+  org: "Bloomberg"
+  detail: "Distributed systems for fixed income trading."
+
+- when: "Aug 2021 – Feb 2023"
+  role: "Senior Product Applications Engineer"
+  org: "AMD"
+  detail: "Optimising latency from NIC wire to application."
+
+- when: "Nov 2020 – Jul 2021"
+  role: "Co-founder"
+  org: "Cohst.Me"
+  detail: "SaaS for influencer marketing and video monetisation."
+
+- when: "Sep 2017 – Aug 2020"
+  role: "PhD, Computer Science"
+  org: "Manchester"
+  detail: >-
+    Resource management and FPGA virtualisation, as a President&rsquo;s Doctoral
+    Scholar. <a href="https://dx.doi.org/10.13140/RG.2.2.36005.93929">Thesis</a>.
+
+- when: "2019"
+  role: "Multi-tenant FPGA platform designer"
+  detail: "Designed FOS and presented the live demo at FPL 2019."
+
+- when: "Sep – Nov 2018"
+  role: "Embedded Platform Engineer"
+  org: "HTV"
+  detail: "Remote-access platform for cryptography acceleration on FPGAs."
+
+- when: "Jul – Sep 2016"
+  role: "Hardware Intern, Design &amp; Verification"
+  org: "Arm"
+  detail: >-
+    Verification IP for
+    <a href="https://www.arm.com/products/system-ip/amba-specifications">AMBA protocols</a>
+    (CHI, ACE, AXI).
+
+- when: "Jul – Aug 2015"
+  role: "Summer Research Assistant"
+  org: "Manchester"
+  detail: >-
+    Transport-triggered and dataflow architecture with
+    <a href="https://personalpages.manchester.ac.uk/staff/javier.navaridas/">Dr Javier Navaridas</a>.
+
+- when: "2014 – 2017"
+  role: "BEng (Hons) Computer Systems Engineering"
+  org: "Manchester"
+  detail: >-
+    Computer architecture and system-on-chip.
+    <a href="http://studentnet.cs.manchester.ac.uk/resources/library/3rd-year-projects/2017/anuj.vaishnav.pdf">Final-year thesis</a>.

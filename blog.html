@@ -1,0 +1,33 @@
+---
+layout: page
+title: Writing
+permalink: /blog/
+description: Essays on computer systems, distributed systems, hardware acceleration and AI.
+---
+
+<header class="page-head">
+	<h1>Writing</h1>
+	<p>Occasional long-form notes on computer systems, distributed systems, hardware
+	acceleration and AI. <a href="{{ '/feed.xml' | relative_url }}">Subscribe via RSS</a>.</p>
+</header>
+
+{%- if site.posts.size == 0 %}
+<p class="ct">No posts yet &mdash; check back soon.</p>
+{%- else %}
+<div class="post-list">
+	{%- for post in site.posts %}
+	<a class="post-card" href="{{ post.url | relative_url }}">
+		<span class="post-list-date">
+			<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+			{%- assign words = post.content | strip_html | number_of_words %} &middot; {{ words | divided_by: 220 | plus: 1 }} min read
+		</span>
+		<h2>{{ post.title }}</h2>
+		{%- if post.subtitle %}
+		<p class="post-list-subtitle">{{ post.subtitle }}</p>
+		{%- endif %}
+		<p>{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncate: 260 }}</p>
+		<span class="go">Read the essay &rarr;</span>
+	</a>
+	{%- endfor %}
+</div>
+{%- endif %}
