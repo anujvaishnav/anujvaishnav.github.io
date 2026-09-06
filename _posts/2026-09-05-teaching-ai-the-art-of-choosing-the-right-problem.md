@@ -8,37 +8,23 @@ description: >-
   capability is direction: deciding which problem is worth working on next.
 ---
 
-I have been thinking about a particular aspect of intelligence that is surprisingly difficult to describe: knowing **what is worth working on**.
+I have been thinking about a particular aspect of intelligence that is surprisingly difficult to describe: knowing what is worth working on.
 
-A lot of engineering looks like problem solving from the outside. You are given something that is too slow, too expensive, unreliable or simply does not work, and your job is to fix it. But the longer I have worked on technical systems, the more I have felt that solving the eventual problem is often only half the work.
+A lot of engineering looks like problem solving from the outside. You are given something that is too slow, too expensive, unreliable or simply does not work, and your job is to fix it. But the longer I have worked on technical systems, the more I have felt that solving the eventual problem is often only half the work. The difficult part is finding the problem that actually matters.
 
-The harder part is finding it.
-
-I studied computer systems engineering and later worked across FPGA systems, RTL, compilers and drivers, low-level networking software, and distributed systems. These areas operate at very different levels of abstraction, but I kept noticing the same pattern.
-
-You start with something broad: the processor is too slow, the network cannot keep up, the system misses its latency target. You investigate, form hypotheses, measure, discard things that looked important but were not, and gradually narrow the problem down. Once you find the real constraint, there is often an established engineering technique that gets you much of the way forward.
-
-Then you measure again, and the bottleneck moves.
+I studied computer systems engineering and later worked across FPGA systems, RTL, compilers and drivers, low-level networking software, and distributed systems. These areas operate at very different levels of abstraction, but I kept seeing the same pattern. You begin with something broad: the processor is too slow, the network cannot keep up, or the system misses its latency target. You investigate, form hypotheses, measure, discard things that looked important but were not, and gradually narrow the problem down. Once the real constraint is visible, there is often an established engineering technique that gets you much of the way forward. You then measure again, find that the bottleneck has moved, and repeat the process.
 
 Over time, this has made one lesson feel more important to me than almost any particular engineering technique:
 
-> **Progress often comes from repeatedly finding the most important problem you can currently make progress on.**
+> Progress often comes from repeatedly finding the most important problem you can currently make progress on.
 
-That sounds obvious when written down. In practice, it involves a lot of judgement.
+That sounds obvious when written down, but it contains several difficult judgements. You have to decide whether a local improvement matters to the larger objective, whether to change something or gather more evidence, when to keep digging, and when a promising direction has become a distraction.
 
-You have to decide whether an improvement actually matters to the larger system, whether you understand the problem well enough to act, whether another experiment would be more useful than another implementation, when to keep digging into a branch, and when to decide that something is already good enough and move elsewhere.
+This is the part I have started wondering about in the context of AI agents. Frontier models already have a remarkable amount of technical knowledge and increasingly strong reasoning ability. Give them a well-defined programming problem, mathematical question or engineering task and they can often make useful progress. A broad objective is different because the problem has not yet been selected for them.
 
-This is the part I have started wondering about in the context of AI agents.
+Ask an agent to fix a function and much of the framing is already done. Ask it to make a distributed system dramatically faster, design an aircraft for a particular mission, discover a better chip architecture, or pursue an open-ended scientific objective, and it first has to decide where its intelligence should go. It must work out what "better" means, which parts of the system currently limit it, whether an experiment would be more useful than an implementation, and when an interesting direction has too little effect on the larger objective to justify more effort.
 
-Frontier models already have a remarkable amount of technical knowledge and increasingly strong reasoning ability. Give them a well-defined programming problem, mathematical question or engineering task and they can often make useful progress.
-
-But a broad objective is different.
-
-Ask an agent to fix a function and the problem has already been selected for it. Ask it to make a distributed system dramatically faster, design the best aircraft for a particular mission, discover a better chip architecture, or pursue an open-ended scientific objective, and it has to decide where its intelligence should go before it can use that intelligence effectively.
-
-What does "better" actually mean? What determines it? Which part of the system currently limits it? Is that limitation worth fixing? Would we learn more by experimenting before changing anything? When should we abandon a technically interesting direction because its effect on the larger objective is too small?
-
-This suggests a useful distinction:
+One way to describe the distinction is:
 
 ```text
 Knowledge
@@ -51,105 +37,62 @@ Direction
 What is worth working out next?
 ```
 
-The first two are already central to how we think about increasingly capable models. I am interested in the third.
-
-Not in the sense of letting an agent invent its own purpose. Human objectives and important constraints still have to anchor the work. The question is whether an agent can learn to allocate its limited reasoning, experimentation and action towards the parts of a problem that are most likely to matter.
-
-Given what it is trying to achieve, **how does an intelligent system decide which problem is worth solving next?**
+Direction is not separate from reasoning. I use the word to isolate a longer-timescale judgement about where reasoning, experimentation and action should be spent. Nor am I suggesting that an agent should invent its own purpose. Human objectives and important constraints still have to anchor the work. The question is whether, within those boundaries, an agent can learn to allocate its limited intelligence towards the parts of a problem that are most likely to matter.
 
 ## The systems engineering pattern
 
-Consider a distributed system whose latency is too high.
+Consider a distributed system whose latency is too high. An inexperienced response is often to start optimizing whatever looks expensive. A more systematic response is to measure where the time actually goes. Storage may appear to dominate at first, but further investigation might show that the real issue is contention around a shared data structure under a particular workload.
 
-An inexperienced response is often to start optimizing things that look expensive. A more systematic response is to measure where the time actually goes. Perhaps storage appears to dominate. Further investigation shows that the real issue is contention, which is eventually traced to one shared data structure under a particular workload.
+The vague objective, "make the system faster", has now become something much more useful: this synchronization mechanism is responsible for most of the latency gap under the workload that matters. Established engineering knowledge can take over from there. We change the design, measure again, and discover which constraint has become important next.
 
-At that point, we have transformed:
+The same loop appears at very different levels of computing. A processor problem becomes a cache or pipeline problem. A networking problem becomes a queueing or memory-access problem. A distributed-system problem becomes contention, serialization, storage or coordination. The valuable work is not just solving the leaf problem. It is discovering which leaf the larger objective currently depends on.
 
-> Make the system faster.
-
-into something much more useful:
-
-> This synchronization mechanism is responsible for most of the latency gap under the workload that matters.
-
-Established engineering knowledge can often take over from there. We change the design, measure again, and discover that the bottleneck has moved somewhere else.
-
-I have seen essentially the same loop at very different levels of computing. A processor performance problem becomes a cache or pipeline problem. A networking problem becomes a queueing or memory-access problem. A distributed-system problem becomes contention, serialization, storage or coordination.
-
-Each time, the useful work is not merely solving the leaf problem. It is discovering which leaf the larger objective currently depends on.
-
-In abstract form:
+In abstract form, the loop looks something like this:
 
 ```text
 What are we trying to improve?
-              ↓
+              |
+              v
 What determines it?
-              ↓
+              |
+              v
 What currently limits it?
-              ↓
+              |
+              v
 Can we understand or change that limitation?
-              ↓
+              |
+              v
 Act or learn
-              ↓
+              |
+              v
 Measure what happened
-              ↓
+              |
+              v
 Update our understanding
-              ↓
+              |
+              v
 Find what matters now
 ```
 
-The loop is simple. Executing it well is not.
-
-A complex system may contain thousands of things that could be improved, while only a handful materially constrain the outcome at any particular moment. Those constraints also move. Fix one bottleneck and another becomes important. Change one component and you may alter the economics of a completely different part of the design.
-
-This is why I find a systems-engineering lens useful for thinking about autonomous AI.
+Nothing in this loop is exotic, but executing it well is difficult. A complex system may contain thousands of things that could be improved, while only a handful materially constrain the outcome at any particular moment. Those constraints also move. Fix one bottleneck and another becomes important; change one component and you may alter the value of work somewhere else. This is why I find a systems engineering lens useful for thinking about autonomous AI.
 
 ## Decomposition is not enough
 
-Suppose we ask an AI system to design an aircraft for a particular mission. It can readily produce a plausible-looking hierarchy involving safety, range, fuel consumption, payload, reliability, manufacturing cost, maintenance, aerodynamics, propulsion and structures.
+Suppose we ask an AI system to design an aircraft for a particular mission. It can readily produce a plausible hierarchy involving safety, range, fuel consumption, payload, reliability, manufacturing cost, maintenance, aerodynamics, propulsion and structures. Producing the hierarchy is useful, but the harder test is whether the system can identify which branches actually control the outcome.
 
-The harder test is whether it can identify which branches actually control the outcome.
+Imagine that it discovers a way to improve one aerodynamic component by 10 percent. That sounds significant until we learn that the component contributes almost nothing to total drag under the relevant flight conditions. A 2 percent improvement somewhere else might have a much larger effect on fuel burn, operating economics or achievable range. The technically more impressive result can therefore be the less valuable one.
 
-Imagine that the model discovers a way to improve one aerodynamic component by 10 percent. That sounds significant until we discover that the component contributes almost nothing to total drag under the relevant flight conditions. Meanwhile, a 2 percent improvement somewhere else might materially affect fuel burn, operating economics or achievable range.
+The same thing happens in software performance work. Making a function twice as fast means very little if it accounts for 0.1 percent of execution time. Good engineers develop the habit of tracing local work back to the larger objective: I am working on X because it affects Y, and Y has a meaningful effect on Z. That chain then invites the questions that matter. How strongly does X affect Y? How much does Y matter to Z? Is this still the largest opportunity, and what might we be giving up by spending another week here?
 
-A technically impressive improvement can therefore be almost worthless.
+Decomposition produces possible branches, but it does not tell us how much those branches matter. A plan might say, "do A, then B, then C." A revisable model says, "I currently believe A matters because it affects B, and B materially affects the outcome. If evidence weakens that relationship, I should reconsider A." The second description contains an approximate account of why the plan exists, which makes it possible to revise the plan when the world does not behave as expected.
 
-This is familiar in software performance work. Making a function twice as fast means very little if it accounts for 0.1 percent of execution time. Good engineers develop the habit of tracing local work back to the larger objective:
-
-> I am working on X because it affects Y, and Y has a meaningful effect on Z.
-
-The important questions then become: how strongly does X affect Y? How much does Y matter to Z? Is this still the largest opportunity? What might we be giving up by spending another week here?
-
-That chain of reasoning turns a decomposition into a revisable model of the problem.
-
-It also introduces something that ordinary task planning often misses.
-
-A plan says:
-
-> Do A, then B, then C.
-
-Systems reasoning says:
-
-> I currently believe A matters because it affects B, and B materially affects the outcome. If evidence weakens that relationship, I should reconsider A.
-
-The second system understands, at least approximately, **why the plan exists**.
-
-The neglected capability is therefore not decomposition alone, but **valuation**: estimating how much progress on one branch is likely to matter to the objective above it.
+The neglected capability is therefore not decomposition alone, but valuation: estimating how much progress on one branch is likely to matter to the objective above it.
 
 ## What counts as a problem?
 
-The word "problem" can become vague quickly.
+The word "problem" can become vague quickly. In a latency investigation, "is queue contention causing the tail-latency gap?" is a question. "Measure queue residence time" is an information-gathering action. "Reduce queue contention" is an operational subgoal, while "redesign synchronization" describes a family of possible interventions. Even the statement "tail latency matters more than average latency" belongs to a different category because it changes our understanding of the objective itself.
 
-Consider a latency investigation:
-
-- "Is queue contention causing the tail-latency gap?" is a question.
-- "Measure queue residence time" is an information-gathering action.
-- "Reduce queue contention" is an operational subgoal.
-- "Redesign synchronization" is a family of possible interventions.
-- "Tail latency matters more than average latency" is a correction to our understanding of the objective.
-
-These are related, but they are not interchangeable.
-
-For this discussion, I use **problem** to mean a temporary focus to which an agent can allocate a bounded amount of effort. It may lead to a sequence of reasoning steps, measurements or interventions, and its value comes from how much that allocation is expected to improve the larger objective.
+These things are related, but they are not interchangeable. For this discussion, I use *problem* to mean a temporary focus to which an agent can allocate a bounded amount of effort. Pursuing it may involve reasoning, measurements, experiments or changes to the system. Its value comes from how much that allocation is expected to improve the larger objective, either directly or by improving the decisions that follow.
 
 For example:
 
@@ -170,442 +113,196 @@ Why it may matter:
   should receive further effort.
 ```
 
-The problem is not a single low-level action, nor is it an unconstrained project that continues indefinitely. It is an **allocation target**.
-
-This distinction matters because problem selection is not somehow outside ordinary decision-making. An RL researcher could reasonably describe it as a higher-level or temporally extended action, related to ideas such as options in hierarchical reinforcement learning.
-
-The point is not to claim otherwise.
-
-The proposal is to make this longer-timescale allocation decision explicit enough that we can inspect it, train it and evaluate it separately from the lower-level actions used to pursue the selected branch.
+The problem is not a single low-level action, nor is it an unconstrained project that continues indefinitely. It is an allocation target. In reinforcement learning terms, it could be described as a higher-level or temporally extended action, related to ideas such as options. I am making the longer-timescale decision explicit because that gives us something we can inspect, learn from and evaluate separately from the lower-level actions used to pursue it.
 
 ## A changing frontier of possible work
 
-At any moment, an agent may have several plausible places where effort could go:
+At any moment, an agent may have several plausible places where effort could go: a suspected bottleneck, an unresolved causal question, an assumption worth testing, a missing measurement, an underdeveloped subgoal, a promising intervention, or a possible reframing of the entire problem. Together, these form a *problem frontier*, the changing set of places where more effort might alter the agent's prospects.
 
-- a suspected bottleneck;
-- an unresolved causal question;
-- an assumption worth testing;
-- a missing measurement;
-- an underdeveloped subgoal;
-- a promising intervention;
-- a possible reframing of the entire problem.
+There are two different capabilities hidden inside this idea. Problem generation asks what plausible places exist where effort could be spent. Problem valuation asks how much effort each of those places deserves. Candidate generation may be at least as difficult as ranking because a system can perfectly order every known optimization and still fail when the useful representation never appears on its frontier.
 
-Together, these form a **problem frontier**: the changing set of places where more effort might alter the agent's prospects.
+The impressive step may not be choosing the best of fifty component-level optimizations. It may be noticing that two apparent bottlenecks are symptoms of one deeper mechanism, that a missing measurement prevents any sensible choice, or that everyone has been optimizing the wrong metric. Today's frontier models already seem reasonably capable of producing candidate explanations, subproblems and next steps when given enough context. The harder question is whether those candidates are useful and complete enough, and whether the model can reliably distinguish a consequential possibility from one that merely sounds plausible.
 
-Two capabilities are needed here, and they should not be confused.
+There is also no reason the system must always choose exactly one candidate. Under uncertainty, allocating everything to the branch with the highest estimated value may be brittle. A sensible strategy might maintain several competing hypotheses, spend a small amount of budget on a high-risk but informative idea, or keep alternatives alive until a decisive experiment becomes available.
 
-The first is **problem generation**:
-
-> What are the plausible places where we could spend effort?
-
-The second is **problem valuation**:
-
-> Which of those places deserves how much effort?
-
-Candidate generation may be at least as difficult as ranking.
-
-A system can perfectly rank every known optimization and still fail because the useful representation never appeared on its frontier. The impressive step may not be choosing the best of fifty component-level optimizations. It may be noticing that two apparent bottlenecks are symptoms of one deeper mechanism, or that everyone has been optimizing the wrong metric.
-
-Today's frontier models already seem reasonably capable of producing candidate explanations, subproblems and next steps when given enough context. The harder question is whether those candidates are complete enough, whether the abstractions are useful, and whether the model can reliably distinguish a consequential possibility from one that merely sounds plausible.
-
-There is also no reason the system must always choose exactly one candidate.
-
-In uncertain research, allocating everything to the branch with the highest estimated value may be brittle. A sensible strategy might maintain several competing hypotheses, spend a small amount of budget on a high-risk but informative idea, or keep alternatives alive until a decisive experiment becomes available.
-
-The deeper technical concept behind "choosing the right problem" is therefore closer to:
-
-> **Allocating effort across a changing problem frontier.**
+Choosing the right problem is therefore better understood as allocating effort across a changing problem frontier.
 
 ## The best local target keeps moving
 
-There is a machine-learning analogy here which I find useful, as long as it is not taken too literally.
+When humans give an engineering agent an objective, we rarely provide a complete optimization function. "Make this service faster" leaves many important questions unanswered. Does average latency matter, or the tail? Under which workloads? At what infrastructure cost? Is degraded performance during failure acceptable? Can consistency be traded for latency?
 
-When humans give an engineering agent an objective, we rarely provide a complete optimization function.
+Even after those requirements become clearer, the best local target changes as work progresses. For a period of time, reducing lock contention may be the most useful thing to optimize. Once that has been addressed, further improvements there may have almost no value because serialization now dominates. Later, network scheduling may become the main constraint. The top-level objective remains relatively stable while the active bottleneck, and therefore the best local target, moves around the system.
 
-"Make this service faster" is not enough. Does average latency matter, or the tail? Under which workloads? At what infrastructure cost? Is degraded performance during failure acceptable? Can consistency be traded for latency?
-
-Even after those requirements become clearer, the best local target changes as work progresses.
-
-For a period of time, reducing lock contention may be the most useful thing to optimize. Once that has been addressed, improving it further may have almost no value. Serialization may now dominate. Later it may be network scheduling.
-
-The top-level objective remains relatively stable while the active bottleneck, and therefore the best local target, moves around the system.
-
-The agent is continually trying to estimate:
-
-> If I improve this, how much will it improve the thing above it?
-
-and eventually:
-
-> How much will that matter to what the human actually cares about?
-
-This is not a literal differentiable loss function. Real engineering contains hard constraints, thresholds, uncertainty, delayed effects and interactions between decisions.
-
-But there is something gradient-like in the intuition. The agent is trying to find the direction in which another unit of effort is likely to produce the most meaningful progress.
+The agent is continually trying to estimate how much an improvement in one place will affect the thing above it and, eventually, how much that effect matters to the human objective. Real engineering does not provide a clean, differentiable loss function. It contains hard constraints, thresholds, uncertainty, delayed effects and interactions between decisions. Even so, there is something gradient-like in the underlying intuition: another unit of effort should go in the direction most likely to produce meaningful progress.
 
 A compact way to think about the value of working on a problem is:
 
 ```text
 value of allocating budget B to problem P
-    ≈
+    is approximately
+
 expected final outcome after spending B on P
-    -
-expected final outcome under the best alternative
-use of the same budget
+and continuing from what that work reveals
+
+minus
+
+expected final outcome after the best alternative
+use of B, with the same remaining budget afterwards
 ```
 
-The point is not that an open-ended agent will calculate this quantity precisely. Humans certainly do not.
+The continuation is important because a measurement may create no immediate improvement and still be the best use of effort. What it reveals can change every decision that follows. We should not value a branch only by the state of the system at the instant its initial budget runs out.
 
-It is a description of the judgement we want the system to approximate.
+I do not expect an open-ended agent to calculate this quantity precisely. Humans certainly do not. It is simply a description of the judgement we want the system to approximate.
 
 ## Sometimes progress means learning rather than changing
 
-Suppose an agent investigating a latency problem has three plausible explanations. It could immediately modify the software, or it could add instrumentation that distinguishes between them.
+Suppose an agent investigating a latency problem has three plausible explanations. It could immediately modify the software, or it could add instrumentation that distinguishes between them. Instrumentation improves no user-facing metric, so locally it can look like zero progress, yet it may be the most valuable action available because it prevents weeks of optimization in the wrong place.
 
-Instrumentation improves no user-facing metric. Locally, it looks like zero progress.
+The same pattern appears throughout engineering and research. Depending on the situation, the right next step might be to measure, inspect a trace, search existing work, build a prototype, run a simulation, prove an intermediate result or ask someone who knows something the system does not. A capable agent therefore needs to decide not only what to change, but whether the next unit of effort is better spent changing the world or improving its understanding of the world.
 
-Yet it may be the most valuable action available because it prevents weeks of optimization in the wrong place.
+This is one reason the boundary between engineering and research feels less clear to me than it first appears. One rough way to view the difference is that routine engineering often operates where much of the path is known, while research becomes more prominent as uncertainty about the path itself grows. The boundary is not clean, though. Engineering frequently creates new understanding, and research often builds and changes real systems.
 
-The same pattern appears throughout engineering and research. Depending on the situation, the right next step might be to measure, inspect a trace, search existing work, build a prototype, run a simulation, prove an intermediate result or ask someone who knows something the system does not.
-
-A capable agent therefore needs to decide not only what to change, but whether the next unit of effort is better spent changing the world or improving its understanding of the world.
-
-This is one reason the boundary between engineering and research feels less clear to me than it initially appears.
-
-Routine engineering operates where much of the path is already known. Harder engineering contains greater uncertainty about the bottleneck, architecture or trade-offs. Research starts to dominate when decomposition reaches a problem for which there is no established method.
-
-The outer loop remains similar. When the answer becomes "we do not know", the uncertainty itself becomes the next focus. What exactly is unknown? Which assumptions matter? What existing approach nearly works? Why does it fail? What experiment would distinguish between competing explanations?
-
-Research produces a better map. Engineering uses the new map to continue towards the objective.
+The outer loop remains similar. When the answer becomes "we do not know", the uncertainty itself becomes the next focus. What exactly is unknown? Which assumptions matter? What existing approach nearly works, and why does it fail? Which experiment would distinguish between competing explanations? Research often improves the map, while engineering both uses and reshapes it.
 
 Mathematics may not be so different. A mathematician trying to prove a theorem rarely performs undirected search through all possible proofs. Much of the work lies in discovering a useful intermediate statement, representation, invariant or lemma. The bottleneck is abstract rather than physical, but the need to decide which intermediate problem deserves attention remains.
 
-Expert intuition matters in all of these settings because the search spaces are far too large to explore uniformly.
+Expert intuition matters in all of these settings because the search spaces are far too large to explore uniformly. One useful interpretation is that intuition is partially amortized search. An expert has seen enough attempts, failures, analogies and recurring structures that a large amount of historical search has been compressed into a relatively cheap prior about where to look. Experts still reason, but they do not reason equally hard about every possible direction. That idea has a direct implication for AI training.
 
-One interpretation I find useful is that:
+## This capability already exists in fragments
 
-> **Intuition is partially amortized search.**
+Problem selection is not new to AI. Rational metareasoning asks how a resource-bounded agent should decide whether another computation is worth performing. Value-of-information methods ask which observation would most improve a later decision. Hierarchical reinforcement learning, active learning and experimental design all address related choices at different levels.
 
-An expert has seen enough attempts, failures, analogies and recurring structures that a large amount of historical search has been compressed into a relatively cheap prior about where to look. Experts still reason, but they do not reason equally hard about every possible direction.
+Modern agent systems also display parts of this behaviour. [Google's AI co-scientist](https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/) generates, compares and evolves hypotheses while a supervisor coordinates the work. [The AI Scientist-v2](https://arxiv.org/abs/2504.08066) uses an experiment manager and tree search. [AlphaEvolve](https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/) develops program candidates through automated evaluation. [GeneBench-Pro](https://openai.com/index/introducing-genebench-pro/) evaluates judgement such as choosing an analysis path and revising assumptions.
 
-That idea has a direct implication for AI training.
+I am not claiming that AI has never selected a problem, or that problem selection is a new mathematical primitive. What interests me is a narrower capability that increasingly appears in fragments across these systems. Given a human objective, an imperfect understanding of the system, a frontier the agent may need to construct, and a limited budget, can it estimate where another unit of effort is most likely to matter? Can it notice when the important candidate is missing, explain why a branch deserves attention, and redirect itself when new evidence changes the ordering?
 
-## Today's harnesses may be tomorrow's training data
+Many current systems search within a goal, domain and evaluation setup supplied by humans. The additional capability I am interested in is learning how to construct and revise the problem frontier itself, then allocate effort across it as the agent's understanding changes.
 
-Problem selection is not new to AI.
+## Use expensive search to teach cheaper judgement
 
-Rational metareasoning has long asked how a resource-bounded agent should decide whether another computation is worth performing. Value-of-information methods ask which observation would most improve a later decision. Hierarchical reinforcement learning deals with decisions made at different timescales. Active learning and experimental design ask where new information is worth acquiring.
+Today's agent harnesses may provide a way to learn this capability. Imagine running large numbers of expensive trajectories during training. Different branches investigate different suspected bottlenecks. Some spend enormous amounts of computation polishing changes that barely affect the objective. Others make a strategically useful measurement early and eliminate half the search space. Some continue with a hypothesis long after the evidence has weakened, while others change direction at the right moment.
 
-Modern agent systems are also beginning to display parts of this behaviour directly.
+Instead of learning only from whether the final attempt succeeded, we could compare these trajectories and look at the allocation decisions along the way. Which problem deserved investigation? When did the evidence justify a switch? Which experiment changed the decision, and which successful-looking optimization barely affected the real objective? The long-term idea is to use expensive search to teach cheaper judgement.
 
-Research-oriented systems use combinations of hypothesis generation, reflection, evaluation, search, persistent state and repeated experimentation. Reasoning models can already benefit from additional computation at inference time and can learn strategies such as decomposing problems, checking intermediate work and trying alternative approaches.
-
-So I do not think the interesting claim is:
-
-> AI does not know how to select problems today.
-
-It increasingly does, at least in fragments.
-
-The narrower question is whether **problem allocation should become a first-class capability**.
-
-Given a human objective, a current understanding of the system, a generated frontier of possible questions and interventions, and a remaining budget, can the agent learn to estimate the marginal value of allocating effort to each candidate?
-
-Can that judgement be made explicit enough to inspect?
-
-Can it be trained from comparative experience?
-
-Can we evaluate it separately from how capable the underlying executor happens to be?
-
-That seems to me like a useful research direction.
-
-And today's somewhat cumbersome agent harnesses may provide a way to pursue it.
-
-Imagine running large numbers of expensive trajectories during training. Different branches investigate different suspected bottlenecks. Some spend enormous amounts of computation polishing changes that barely affect the objective. Others make a strategically useful measurement early and eliminate half the search space. Some continue with a hypothesis long after evidence has weakened; others change direction at the right moment.
-
-Instead of learning only from whether the final attempt succeeded, we can compare these trajectories and ask where the important allocation decisions occurred.
-
-Which problem was actually worth investigating?
-
-When was there enough evidence to abandon the current branch?
-
-Which experiment changed the decision most?
-
-Which apparently successful optimization had almost no effect on the root objective?
-
-How much better would the result have been if the agent had spent its budget elsewhere?
-
-The long-term idea is simple:
-
-> **Use expensive search to teach cheaper judgement.**
-
-## A possible architecture
-
-I would not begin by changing the transformer architecture.
-
-I would start with the best available reasoning model and make the structure explicit in the surrounding agent system. The purpose of the first implementation would not be architectural elegance. It would be to make problem generation and allocation visible enough to study.
-
-The system would maintain three pieces of persistent working state.
-
-The **objective and constraint model** records what should count as success: human objectives, hard constraints, acceptable trade-offs, uncertainty about the request, and decisions that require human authorization.
-
-The **causal belief model** records what the agent currently thinks causes what: system mechanisms, observations, simulations, previous interventions, competing explanations and confidence in those beliefs.
-
-The **problem frontier** records where effort could be allocated next: candidate questions, bottlenecks, measurements, experiments, interventions and reframings, together with evidence, dependencies, estimated value and budget already spent.
-
-Three capabilities then operate over that state.
-
-A **problem generator** proposes and revises possible focus areas.
-
-A **problem-value allocator** compares those candidates and decides how to distribute a limited budget across them.
-
-A **controller and executor** decides what to do within those allocations: reason, search, measure, experiment, modify the system, ask a human, or stop.
-
-Conceptually:
-
-```text
-                         HUMAN OBJECTIVE
-                                │
-                                ▼
-                 ┌───────────────────────────┐
-                 │  OBJECTIVE AND CONSTRAINT │
-                 │           MODEL           │
-                 │                           │
-                 │ What counts as success?   │
-                 │ What cannot be traded?    │
-                 └─────────────┬─────────────┘
-                               │
-                               ▼
-                 ┌───────────────────────────┐
-                 │   CAUSAL BELIEF MODEL     │
-                 │                           │
-                 │ How does the system work? │
-                 │ What do we know so far?   │
-                 └─────────────┬─────────────┘
-                               │
-                               ▼
-                 ┌───────────────────────────┐
-                 │     PROBLEM GENERATOR     │
-                 │                           │
-                 │ Propose possible places   │
-                 │ to spend effort           │
-                 └─────────────┬─────────────┘
-                               │
-                               ▼
-                 ┌───────────────────────────┐
-                 │      PROBLEM FRONTIER     │
-                 │                           │
-                 │ Questions, bottlenecks,   │
-                 │ unknowns, experiments,    │
-                 │ interventions, reframings │
-                 └─────────────┬─────────────┘
-                               │
-                               ▼
-                 ┌───────────────────────────┐
-                 │ PROBLEM-VALUE ALLOCATOR   │
-                 │                           │
-                 │ How should the remaining  │
-                 │ budget be distributed?    │
-                 └─────────────┬─────────────┘
-                               │
-                     budgeted portfolio
-                       + justification
-                               │
-                               ▼
-                 ┌───────────────────────────┐
-                 │   CONTROLLER / EXECUTOR   │
-                 │                           │
-                 │ reason | learn | act | ask│
-                 └─────────────┬─────────────┘
-                               │
-                               ▼
-                    EVIDENCE AND OUTCOMES
-                               │
-                               ▼
-                  update objectives, beliefs
-                    and the problem frontier
-                               │
-                               └──────────────↺
-```
-
-This is deliberately more explicit than a mature implementation may need to be.
-
-The objective model, causal model and frontier are artifacts: the system's changing, declared working state. The generator, allocator and controller are capabilities operating over that state. Reasoning, measurement and implementation are processes invoked by those capabilities.
-
-The phrase **declared working state** matters. An external graph is not guaranteed to be a faithful readout of everything represented inside a neural model. It is an inspectable account that can be checked against evidence and behaviour.
-
-The problem generator and allocator should also interact rather than form a one-way pipeline. If every current candidate has low expected value, or none explains enough of the gap, the allocator should trigger another round of problem generation. If the chosen problem remains too broad, the controller may decompose it and place new candidates onto the frontier.
-
-Initially, the same foundation model could perform several of these roles using different contexts. Later, the allocator might become a separately trained value model, or parts of the entire loop could be distilled back into the foundation model.
-
-The boxes are not the claim.
-
-Their purpose is to make the underlying capability measurable.
-
-## How could we train problem selection?
-
-The hardest part is obtaining a useful training signal.
-
-A successful trajectory does not prove that every allocation decision inside it was good. A failed trajectory does not prove that its initial direction was wrong. Results may depend on executor quality, random events, delayed effects and interactions between branches.
-
-More importantly, we normally do not observe what would have happened if the agent had worked on something else.
-
-A useful first experiment would therefore use environments where counterfactual comparisons can actually be run.
-
-Start from the same state. Generate several possible allocation targets. Clone the environment, give each target an equal budget, and let the same or comparable executor pursue each branch. Then evaluate the resulting states against the top-level objective.
+A useful comparison would begin from the same state. Generate several possible allocation targets, clone the environment, and give each target the same initial budget. The branches should not be scored only on their immediate result, however. Each resulting state should also receive the same continuation budget, either by actually running the continuation or by estimating its value carefully.
 
 For example:
 
 ```text
 Shared initial state
-        │
-        ├── 20 steps on memory pressure
-        ├── 20 steps on queue contention
-        ├── 20 steps on network scheduling
-        └── 20 steps on workload measurement
+        |
+        +-- 20 steps on memory pressure --------+
+        +-- 20 steps on queue contention -------+--> equal continuation budget
+        +-- 20 steps on network scheduling -----+
+        +-- 20 steps on workload measurement ---+
 ```
 
-Suppose workload measurement reveals that all three implementation branches were based on the wrong traffic assumptions.
+Suppose workload measurement produces no immediate throughput improvement but reveals that all three implementation branches were based on the wrong traffic assumptions. With an equal continuation budget, that branch may lead to the best eventual result because the remaining effort is now directed at the real system. The lesson is not merely that measurement eventually succeeded. It is that, when uncertainty about the workload dominates uncertainty about the implementation, resolving that uncertainty deserves the initial budget.
 
-That gives us a much stronger lesson than simply observing that the measurement branch eventually succeeded:
+Across many such comparisons, a problem-value model could learn better priors about which allocations tend to matter, how much evidence justifies a switch, and how to value information that improves later decisions.
 
-> When uncertainty about the workload dominates uncertainty about the implementation, resolving that uncertainty should receive the initial budget.
+Problem generation needs its own signal as well. A system should not receive full credit for ranking supplied candidates if the important candidate never enters the frontier. Training environments should therefore include cases where success depends on finding a better abstraction, combining several symptoms under one cause, inventing a useful measurement, or noticing that the supplied metric is a misleading proxy. The stronger test is whether this judgement transfers to unseen causal structures, rather than merely to new descriptions of familiar ones. Otherwise, we may simply teach another collection of heuristics.
 
-Across many such comparisons, a problem-value model could learn to rank allocations and become better calibrated about how much different branches are likely to matter.
-
-Problem generation needs its own signal as well.
-
-A system should not receive full credit for ranking supplied candidates if the important candidate never enters the frontier. Training environments should therefore contain cases where success depends on finding a better abstraction, combining several symptoms under one cause, or noticing that the supplied metric is a misleading proxy.
-
-The stronger test would be whether this transfers to **unseen causal structures**, not just new descriptions of familiar ones.
-
-Otherwise, we may simply teach another collection of heuristics.
-
-At first, this search could be extremely expensive. That is fine during training.
-
-The broader hypothesis is:
+At first, this search could be extremely expensive, which is acceptable during training:
 
 ```text
 expensive exploration during training
-                 ↓
+                 |
+                 v
 comparative experience about what mattered
-                 ↓
+                 |
+                 v
 learned priors about where to look
-                 ↓
+                 |
+                 v
 less wasted search during deployment
 ```
 
-The desired outcome is not a model that never iterates. Real engineering cannot avoid iteration because important information genuinely comes from interaction with the world.
+The aim is not to produce a model that never iterates. Real engineering cannot avoid iteration because important information genuinely comes from interacting with the world. The aim is a model that wastes far fewer iterations.
 
-The goal is a model that wastes far fewer iterations.
+## What this might look like inside an agent
 
-## A benchmark for choosing what to work on
+I would not begin by changing the transformer architecture. I would start with the best available reasoning model and make the relevant state explicit in the surrounding agent system. The purpose would not be architectural elegance, but to make problem generation and allocation visible enough to inspect.
 
-This capability would also need a different style of evaluation.
+The system might maintain three pieces of working state:
 
-Many widely used benchmarks provide the problem and primarily measure whether the model eventually solves it. Even where time, tokens or compute are limited, the agent is usually spared an important decision:
+- an **objective and constraint model** describing success, hard constraints, trade-offs and decisions that require human involvement;
+- a **causal belief model** describing what the agent currently thinks causes what, and how confident it is;
+- a **problem frontier** containing candidate questions, measurements, interventions and reframings, together with the evidence and budget attached to them.
 
-**What deserves attention in the first place?**
+A problem generator would revise the frontier, an allocator would distribute effort across it, and a controller would decide how to pursue each allocation: reason, search, measure, experiment, modify the system, ask a human, or stop.
 
-I would start with something relatively mundane rather than unsolved science: a simulated distributed system.
+Conceptually:
 
-The agent's objective might be to maximize throughput while satisfying tail-latency, reliability and infrastructure-cost constraints. The environment would contain many components and tunable parameters, but only a few would matter at any particular moment.
+```text
+Human objective and constraints
+              |
+              v
+       Causal belief model
+              |
+              v
+       Problem generator
+              |
+              v
+        Problem frontier
+              |
+              v
+      Problem-value allocator
+              |
+              v
+      Controller / executor
+     reason | learn | act | ask
+              |
+              v
+       Evidence and outcomes
+              |
+              +----> update beliefs and frontier ----> loop
+```
 
-The causal structure would be hidden. Some local improvements would be decoys, producing attractive component-level metrics without meaningfully improving the top-level outcome. Measurements would consume budget but reveal structure. The value of an intervention would change after other interventions, causing bottlenecks to move.
+This is deliberately more explicit than a mature implementation may need to be. The objective model, causal model and frontier represent the system's declared working state. The generator, allocator and controller operate over that state, invoking reasoning, measurement and implementation as needed. The diagram is not a claim that these must become separate neural modules. Its purpose is to expose a capability that would otherwise remain hidden inside a long stream of model calls.
 
-Some apparent component problems might share a deeper cause. In other cases, the benchmark workload itself might be a poor proxy for the production objective, forcing the agent to notice the mismatch rather than simply optimize what was easiest to measure.
+The word *declared* is important because an external graph is not guaranteed to be a faithful readout of everything represented inside a neural model. It is an inspectable account of what the agent says it currently believes, which can be checked against the evidence and its behaviour.
 
-Most importantly, the benchmark would not provide a complete list of candidate problems.
+The generator and allocator should also interact rather than form a one-way pipeline. If every current candidate has low expected value, or none explains enough of the gap, the allocator should trigger another round of problem generation. If the chosen problem remains too broad, the controller may decompose it and place new candidates onto the frontier. Initially, the same foundation model could perform several roles using different contexts. Later, some of the judgement might be distilled into a specialized value model or back into the foundation model itself.
 
-The agent would have to generate its own problem frontier.
+## What would a useful evaluation look like?
 
-Give it fifty experiments, a fixed reasoning budget and a limited number of production-like evaluations. Then measure not only the final system performance, but how intelligently those resources were used.
+Most benchmarks provide the problem and primarily measure whether the model eventually solves it. Even where time, tokens or compute are limited, the agent is usually spared the decision about what deserves attention in the first place.
 
-Did it identify the active bottleneck early?
+To make the idea concrete, I would start with something relatively mundane rather than unsolved science: a simulated distributed system. The agent's objective might be to maximize throughput while satisfying tail-latency, reliability and infrastructure-cost constraints. The environment would contain many components and possible interventions, but only a few would matter at any particular moment.
 
-How much budget did it spend on irrelevant branches?
+The causal structure would be hidden. Some local improvements would be decoys, producing attractive component-level metrics without meaningfully improving the top-level outcome. Measurements would consume budget but reveal structure. The value of an intervention would change after other interventions, causing bottlenecks to move. Some apparent component problems might share a deeper cause, while in other cases the benchmark workload itself might be a poor proxy for the production objective. The agent would need to notice the mismatch rather than simply optimize what is easiest to measure.
 
-Did it recognize diminishing returns?
+Crucially, the environment should not provide a complete list of candidate problems. The agent should be able to create useful investigative abstractions of its own by adding instrumentation, combining observations, formulating an underlying explanation, redefining an aggregate, questioning a workload assumption, or discovering that two symptoms have one cause. If every possible measurement, intervention and hypothesis is supplied as a fixed menu, the task risks collapsing into ordinary optimization over a large action space. The interesting question is whether the agent can discover what deserves to become an action or question in the first place.
 
-Did its predicted problem values match the eventual outcomes?
+Give it a fixed experiment budget, a limited reasoning budget and a small number of production-like evaluations. Then measure not only the final system performance, but how intelligently those resources were used. Did it identify the active bottleneck early? How much budget did it waste on irrelevant branches? Did it recognize diminishing returns and change direction when the bottleneck moved? Could it invent a useful measurement or candidate that was not supplied? Does the behaviour transfer when the causal structure changes?
 
-Did it change direction when the bottleneck moved?
-
-Could it discover a useful candidate that was not supplied to it?
-
-Does the behaviour transfer when the underlying causal structure changes?
-
-The distinctive question becomes:
-
-> **Did the agent discover and maintain a useful ordering over where bounded effort was likely to matter, and did that ordering change appropriately as evidence arrived?**
-
-That feels much closer to the capability I am interested in than another benchmark where the problem has already been cleanly isolated for the model.
+What matters is whether the agent discovers and maintains a useful ordering over where bounded effort is likely to have an effect, and whether that ordering changes appropriately as evidence arrives. That feels closer to the capability I am interested in than another benchmark where the problem has already been cleanly isolated for the model.
 
 ## The objective still has to stay anchored
 
-There is an obvious danger in giving an agent freedom to reinterpret its subgoals.
+There is an obvious danger in giving an agent freedom to reinterpret its subgoals. It should be able to discover that a metric is a poor proxy, for example that average latency is irrelevant when users care about tail latency, or that the supplied benchmark does not represent production behaviour. It should not be able to solve a difficult objective by quietly replacing it with an easier one.
 
-The system should be able to discover that a metric is a poor proxy. It should be able to say that optimizing average latency is irrelevant when users actually care about tail latency, or that the supplied benchmark does not represent production behaviour.
+Real objectives are also rarely singular or complete. An aircraft is not judged only by operating cost. Safety, certification, reliability, environmental impact, development schedule and passenger experience may matter to different stakeholders, and some of those cannot sensibly be collapsed into one number. The objective and constraint model should therefore be treated more like a working agreement with humans than a perfect scalar reward. Its lower-level interpretation should be correctable as evidence changes, but consequential changes to human intent need human involvement.
 
-But it should not solve a difficult objective by quietly replacing it with an easier one.
+A reasonable principle is that the agent may investigate uncertainty about causal facts, while uncertainty about human values or consequential trade-offs should cause it to ask. Asking is not an admission of failure. It is another legitimate use of effort.
 
-Real objectives are also rarely singular or complete. An aircraft is not judged only by operating cost. Safety, certification, reliability, environmental impact, development schedule and passenger experience may matter to different stakeholders, and some of those cannot sensibly be collapsed into one number.
-
-The objective and constraint model should therefore be treated more like a working agreement with humans than a perfect scalar reward.
-
-Its lower-level interpretation should be correctable as evidence changes, but consequential changes to human intent need human involvement.
-
-A useful rule might be:
-
-> **When uncertainty concerns causal facts, the agent may investigate. When uncertainty concerns human values or consequential trade-offs, it should ask.**
-
-"Asking" is therefore not an admission of failure. It is another legitimate allocation of effort.
-
-An explicit representation does not eliminate reward hacking, incorrect assumptions or convenient reinterpretations. What it gives us is an interface where objectives, proxies and justifications can be examined and corrected.
-
-That seems valuable even if much of the underlying judgement eventually becomes internal to the model.
+An explicit representation does not eliminate reward hacking, incorrect assumptions or convenient reinterpretations. What it provides is an interface where objectives, proxies and justifications can be examined and corrected. That seems useful even if much of the underlying judgement eventually becomes internal to the model.
 
 ## From search to intuition
 
-I suspect the eventual system will contain both learned and explicit components.
+I suspect the eventual system will contain both learned and explicit components. External systems are natural places to keep durable state, measurements, evidence, tools and long-running experiments. Models are natural places to compress enormous amounts of experience into priors and judgement.
 
-External systems are natural places to keep durable state, measurements, evidence, tools and long-running experiments. Models are natural places to compress enormous amounts of experience into priors and judgement.
+Today, a harness may repeatedly tell a model to generate alternatives, reflect, reconsider assumptions and decide whether to continue. With enough comparative training experience, some of those behaviours may become internal habits. The model could develop something analogous to an experienced engineer's intuition: not a magical ability to know the answer immediately, but a strong prior about what deserves investigation, what probably does not matter, when measurement is more useful than speculation, and how much reasoning a decision warrants.
 
-Today, a harness may repeatedly tell a model to generate alternatives, reflect, reconsider assumptions and decide whether to continue. With enough comparative training experience, some of those behaviours may become internal habits.
+In that sense, expensive agentic search during training could become cheaper judgement at inference time. This brings us back to knowledge, reasoning and direction. Knowledge and local reasoning are comparatively easy to score inside a bounded task. Direction becomes most visible across time, uncertainty and competing uses of a limited budget.
 
-The model could develop something analogous to an experienced engineer's intuition: not a magical ability to know the answer immediately, but a strong prior about what deserves investigation, what probably does not matter, when measurement is more useful than speculation, and how much reasoning a decision warrants.
+A system with extraordinary knowledge and reasoning ability can still waste most of its effort on low-value questions. Another system with somewhat weaker local reasoning may outperform it if it consistently directs itself towards high-leverage problems. The same is true of human engineering organizations. The strongest team is not necessarily the one that completes every assigned task fastest. Often, it is the one that repeatedly figures out which work matters, which work can wait, and which work should never have been assigned in the first place.
 
-In that sense, expensive agentic search during training could become cheaper judgement at inference time.
+That is why I keep returning to systems engineering. From enough distance, software engineering, hardware design, mathematics and scientific research begin to share an underlying structure. Their tools and feedback loops differ, and the amount of uncertainty varies enormously, but progress repeatedly requires building some model of what matters, identifying where that model says progress is constrained, acting or learning at that point, and then revising the model when reality answers back.
 
-And this returns to the three aspects of capability that started this essay:
+We do not need an AI that has already learned how to solve every possible problem. A more general capability would be an AI that can enter a problem it has never seen before, build enough understanding to discover what matters, generate plausible places where effort could go, allocate its limited intelligence among them, and keep redirecting itself as its understanding changes.
 
-```text
-Knowledge
-What do I know?
+The question I would want such a system to become exceptionally good at asking is not simply "what should I do next?" It is:
 
-Reasoning
-What can I work out?
-
-Direction
-What is worth working out next?
-```
-
-Knowledge and local reasoning are comparatively easy to score inside a bounded task. Direction becomes most visible across time, uncertainty and competing uses of a limited budget.
-
-A system with extraordinary knowledge and reasoning ability can still waste most of its effort on low-value questions. Another system with somewhat weaker local reasoning may outperform it if it consistently directs itself towards high-leverage problems.
-
-This is familiar from human engineering organizations as well. The strongest team is not necessarily the one that completes every assigned task fastest. Often, it is the one that repeatedly figures out which work matters, which work can wait, and which work should never have been assigned in the first place.
-
-That is why I keep coming back to systems engineering.
-
-When viewed from enough distance, software engineering, hardware design, mathematics and scientific research begin to share an underlying structure. Their tools and feedback loops differ, and the amount of uncertainty varies enormously, but progress repeatedly requires building some model of what matters, identifying where that model says progress is constrained, acting or learning at that point, and then revising the model when reality answers back.
-
-We do not need an AI that has already learned how to solve every possible problem. That is neither realistic nor necessary.
-
-A more general capability would be an AI that can enter a problem it has never seen before, build enough understanding to discover what matters, generate plausible places where effort could go, allocate its limited intelligence among them, and keep redirecting itself as its understanding changes.
-
-The question I would want such a system to become exceptionally good at asking is therefore not simply:
-
-> **What should I do next?**
-
-It is:
-
-> **Given everything I currently know, where is the next unit of intelligence most worth spending?**
+> Given everything I currently know, where is the next unit of intelligence most worth spending?
