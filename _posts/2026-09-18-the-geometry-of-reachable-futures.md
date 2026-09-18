@@ -28,6 +28,13 @@ That led me to a simple idea:
 
 I have started thinking of this as the **geometry of reachable futures**.
 
+<figure class="figure-wide">
+  <img src="{{ '/images/reachable_futures_decision_space.png' | relative_url }}"
+       width="1519" height="673"
+       alt="A two-dimensional projection of a decision space. From the current belief state, action A moves towards the goal but reaches a narrow region that ends in a dead end behind a barrier. Action B moves to a much broader region that keeps three routes to the goal region open. Action I moves to a refined belief state with less uncertainty, and it reveals a further route.">
+  <figcaption>Distance to the goal and future reachability are not the same thing.</figcaption>
+</figure>
+
 I do not mean a literal geometric space, and I am not suggesting that a model should enumerate every possible future. The phrase is useful because it draws attention to shape. Where do paths split? Which choices close options? Which mistakes are easy to recover from? Which actions look small now but change everything later?
 
 If an AI system could represent that structure, even approximately, it might have a better basis for planning, exploration, recovery, and deciding where more reasoning is actually worth the cost.

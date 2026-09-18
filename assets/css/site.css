@@ -347,6 +347,21 @@ ul,ol{margin:0;padding:0;list-style:none}
 .post-content li::marker{color:var(--fg-dim)}
 .post-content hr{border:0;border-top:1px solid var(--rule);margin:2.5em 0}
 .post-content img{border-radius:8px;border:1px solid var(--rule)}
+
+/* figures. Diagrams carry their own light background, so keep it in dark mode
+   rather than inverting the colours of the diagram. */
+.post-content figure{margin:2.2em 0}
+.post-content figure img{display:block;width:100%;background:#fff}
+.post-content figcaption{
+  margin-top:.75em;font-size:.88rem;line-height:1.55;
+  color:var(--fg-dim);text-align:center;
+}
+/* Wide diagrams are unreadable at the 48rem measure. Let them break out of the
+   text column once the viewport has room on both sides. */
+@media (min-width:1200px){
+  .post-content figure.figure-wide{width:62rem;margin-inline:-7rem}
+}
+
 .post-content blockquote{
   background:var(--panel);border-left:4px solid var(--accent);
   margin:0 0 1.5em;padding:1em 1.3em;border-radius:0 8px 8px 0;color:var(--fg);
